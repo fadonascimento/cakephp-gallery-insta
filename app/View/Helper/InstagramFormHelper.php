@@ -23,7 +23,7 @@ class InstagramFormHelper extends FormHelper {
 	{	
 		$options = $this->addClass($options,'form-control');
 
-		if ((isset($options['div'])) && $options['div'] !== false) {
+		if (empty($options['div']) || $options['div'] !== false) {
 			$optionsDefault = array('div'=>'form-group');
 			$options = array_merge_recursive($optionsDefault, $options);
 			if (sizeof($options['div']) > 1) {

@@ -138,7 +138,7 @@ $config['roles'] = array(
 $config['rules'] = array(
 	'allow' => array(
 		'*' => 'Role/admin',
-		'*' => 'Role/customer',
+		'controllers/posts/index' => 'Role/customer',
 	),
 	'deny' => array(),
 );

@@ -129,12 +129,6 @@ class AppController extends Controller {
 			$this->bodyClass = 'not-front';
 		}
 		
-		/**
-		*	Carrega os Models que serão utilizados
-		*/
-		if (!$this->Formulario) {
-			$this->loadModel('Formulario');
-		}
 
 		/**
 		*  Carrega o Usuario atual para exibir na view
