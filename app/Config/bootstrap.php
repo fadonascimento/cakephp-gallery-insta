@@ -66,6 +66,8 @@ $_pluralIrregular = array(
  	'users' => 'user',
     'setor' => 'setores',
     'setores' => 'setor',
+    'album' => 'albuns',
+    'albuns' => 'album',
 );
 $_uninflected = array('atlas','lapis', 'onibus', 'pires', 'virus', '.*x', 'status');
 

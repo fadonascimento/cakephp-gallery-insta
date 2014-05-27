@@ -1,0 +1,18 @@
+boy, segue uma ideia:
+
+            1˚ Criar login e senha (Nome, End, Tel, Email)
+
+2˚ Criar painel administrativo (Criar evento, Meus eventos, Slideshow)
+
+    Criar Evento (Nome, Data e hora (inicio e fim), tags)
+
+    Meus Eventos:
+    Nome do Evento (gerenciar álbum, pausar, editar, deletar)
+    Gerenciar Album (atribuir permissão de exibição para as fotos e vídeos)
+
+    Slideshow (selecionar o evento).
+    Slideshow tem que ser fullscreen
+
+    um cliente tem varios eventos
+um evento pode ter varias galerias
+uma gelaria tem varias fotos

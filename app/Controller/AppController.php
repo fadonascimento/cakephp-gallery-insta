@@ -37,7 +37,7 @@ class AppController extends Controller {
 	public $baseUrl;
 	public $user; 
 	public $helpers = array('Minify','Image','Form'=>array('className'=> 'InstagramForm')); 
-	public $components = array('Session', 'Auth', 'Acl');//,'MenuAcl');
+	public $components = array('Session', 'Auth', 'Acl','Paginator');//,'MenuAcl');
 
 	/**
 	 * Verifica se é o prefixo

@@ -37,7 +37,8 @@
 							'jquery',
 							'bootstrap.min',
 							'jquery.scrollTo.min',
-							'jquery.dcjqaccordion.2.7.js',
+              'jquery.dcjqaccordion.2.7',
+							'jquery.tagsinput',
 							'common-scripts'
 						));?>
 	<?= $this->Html->script('global');?>

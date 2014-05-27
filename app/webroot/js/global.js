@@ -12,6 +12,8 @@ window.INSTAGRAN = window.INSTAGRAN || {};
             console.log(height);
             console.log(width);
 
+            $('.tagsinput').tagsInput();
+
         };
 
         return {

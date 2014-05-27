@@ -10,7 +10,7 @@ App::uses('AuthComponent', 'Controller/Component');
 class User extends AppModel {
 
 	//public $useTable = 'users';
-	public $displayField = 'nome';
+	public $displayField = 'name';
 
 
 /**
@@ -22,7 +22,7 @@ class User extends AppModel {
  * Regras de validação
  */
 	public $validate = array(
-		'nome' => array(
+		'name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 			),

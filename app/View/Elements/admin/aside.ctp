@@ -25,12 +25,19 @@
                   <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="icon-laptop"></i>
-                          <span>Layouts</span>
+                          <span>Eventos</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="boxed_page.html">Boxed Page</a></li>
-                          <li><a  href="horizontal_menu.html">Horizontal Menu</a></li>
-                          <li><a  href="language_switch_bar.html">Language Switch Bar</a></li>
+                          <li><?= $this->Html->link(__('Listar'),array(
+                                        'controller'=>'events','action'=>'index'),array(
+                                        'escape' => false,
+                                        ));?>
+                          </li>
+                           <li><?= $this->Html->link(__('Adicionar'),array(
+                                        'controller'=>'events','action'=>'add'),array(
+                                        'escape' => false,
+                                        ));?>
+                          </li>
                       </ul>
                   </li>
               </ul>

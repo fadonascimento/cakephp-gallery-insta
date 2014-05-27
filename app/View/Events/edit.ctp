@@ -1,26 +1,14 @@
-<div class="events form">
-<?php echo $this->Form->create('Event'); ?>
-	<fieldset>
-		<legend><?php echo __('Edit Event'); ?></legend>
-	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('name');
-		echo $this->Form->input('tags');
-		echo $this->Form->input('event_date');
-		echo $this->Form->input('customer_id');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Event.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('Event.id'))); ?></li>
-		<li><?php echo $this->Html->link(__('List Events'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Customer'), array('controller' => 'users', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Albuns'), array('controller' => 'albuns', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Album'), array('controller' => 'albuns', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
+<section class="panel">
+	<header class="panel-heading">
+		Editar Evento
+	</header>
+	<div class="panel-body">
+		<?= $this->Form->create('Event');?>
+			<?= $this->Form->input('id');?>
+			<?= $this->Form->input('name',array('label'=>__('Nome')));?>
+			<?= $this->Form->input('tags',array('id'=>'tags','div'=>false, 'class'=>'tagsinput'));?>
+			<?= $this->Form->input('event_date',array('label'=> __('Data do evento')));?>
+			<?= $this->Form->input('customer_id',array('label'=> __('Cliente')));?>
+		<?= $this->Form->end(__('Salvar'));?>
+	</div>
+</section>
