@@ -8,10 +8,9 @@ App::uses('AppController', 'Controller');
  */
 class UsersController extends AppController {
 
-	var $scaffold;
-/**
- * Antes de filtrar a requisição
- */
+	/**
+	 * Antes de filtrar a requisição
+	 */
 	public function beforeFilter() {
 		// Libera o acesso às actions de login e logout
 		$this->Auth->allow('login', 'logout');

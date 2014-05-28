@@ -28,6 +28,13 @@
 	Router::connect('/login', array('controller' => 'users', 'action' => 'login'));
 	// Router::connect('/admin', array('controller' => 'users', 'action' => 'dashboard'));
 
+	Router::connect('/eventos/:id-:slug', // E.g. /blog/3-CakePHP_Rocks
+		    array('controller' => 'events', 'action' => 'viewEvent'),
+		    array(
+		        'pass' => array('id', 'slug'),
+		        'id' => '[0-9]+'
+		    )
+		);
 	
 /**
  * ...and connect the rest of 'Pages' controller's URLs.

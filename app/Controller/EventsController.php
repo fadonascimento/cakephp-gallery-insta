@@ -12,36 +12,20 @@ class EventsController extends AppController {
 
 
 
-	public function listModeration($eventId)
-	{
+	/**
+	 * Antes de filtrar a requisição
+	 */
+	public function beforeFilter() {
+		// Libera o acesso às actions de login e logout
+		$this->Auth->allow('login', 'logout');
+		return parent::beforeFilter();
+	}
 
 
-		if ($this->request->is('post')) {
-
-
-
-
-		}
-
-		$options = array('conditions' => array('Event.' . $this->Event->primaryKey => $eventId));
-		$event = $this->Event->find('first', $options);
-		$event = $event['Event'];
-		$tag = $event['tags'];
-		$results = Cache::read("getTags_{$eventId}_{$tag}", 'default');
-        debug($results);
-        if (!$results) {
-        	debug('nao foi cache');
-			$HttpSocket = new HttpSocket();
-			$results = json_decode($HttpSocket->get("https://api.instagram.com/v1/tags/$tag/media/recent?access_token=17844556.f59def8.1088003165514e1e8e562400fb0542c5")->body);
-            debug($results);
-            Cache::write("getTags_{$eventId}_{$tag}", $results, 'default');
-        }
-        
-		
-		$this->set(array(
-						'event' => $event,
-						'results' => $results->data,
-						));
+	public function viewEvent($eventId,$slug) {
+		$this->layout = 'site';
+		debug($eventId);
+		debug($slug);
 	}
 
 

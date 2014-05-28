@@ -19,12 +19,19 @@ class AlbunsController extends AppController {
 
 
 		if ($this->request->is('post') || $this->request->is('put')) {
-			debug($this->request->data);exit;
-
+			$dados = $this->request->data;
+			foreach ($dados['Picture'] as $value) {
+				if (isset($value['instagram_id'])) {
+					$retorno[] = array(
+									'album_id' 	   => $albumId,
+									'result'       => $value['result'],
+									'instagram_id' => $value['instagram_id']
+								);
+				}
+			}
 			$this->loadModel('Picture');
 			$this->Picture->create();
-			if ($this->Picture->saveAll($this->request->data)) {
-				$fotosSalvas = $this->request->data;
+			if ($this->Picture->saveMany($retorno)) {
 				$this->flashSucesso('Imagens Salvas com Sucesso');
 			}
 
@@ -33,41 +40,31 @@ class AlbunsController extends AppController {
 
 		$options = array('conditions' => array('Album.' . $this->Album->primaryKey => $albumId));
 		$album = $this->Album->find('first', $options);
-		
 		$tag = $album['Album']['tags'];
 		$results = Cache::read("getTags_{$albumId}_{$tag}", 'default');
         //debug($results);exit;
         if (!$results) {
         	debug('nao foi cache');
 			$HttpSocket = new HttpSocket();
-			$results = json_decode($HttpSocket->get("https://api.instagram.com/v1/tags/$tag/media/recent?access_token=17844556.f59def8.1088003165514e1e8e562400fb0542c5")->body);
+			$results = json_decode($HttpSocket->get("https://api.instagram.com/v1/tags/$tag/media/recent?access_token=17844556.f59def8.1088003165514e1e8e562400fb0542c5")->body,true);
             Cache::write("getTags_{$albumId}_{$tag}", $results, 'default');
         }
-
-        if (!isset($results->erro)) {
-        	$results = $results->data;
-
-        	if (!empty($fotosSalvas)) {
-        		foreach ($results as $key => $result) {
-        			foreach ($fotosSalvas as $key => $value) {
-        				# code...
-        			}
-        			// if ($this->recursive_array_search()) {
-
-        			// }
-        		}
-        		// debug($fotosSalvas);
-        		// debug($results);
-        	}
-
-
+       // debug($results);
+        if (!isset($results['erro'])) {
+        	$results = $results['data'];
+    		$pictureIds = $this->Album->Picture->find('list',array('fields'=>array('instagram_id'),'conditions'=>array('album_id'=>$albumId)));
+    		foreach ($results as $key => $result) {
+    			$instagramId = Hash::get($result, 'caption.id');
+    			if (in_array($instagramId, $pictureIds)) {
+    				unset($results[$key]);
+    			}
+    		}
         }
-
-
-        $this->request->data = $album;
 		
 		$this->set(array('results' => $results));
 	}
+
+
 
 	public function recursive_array_search($needle,$haystack) {
 	    foreach($haystack as $key=>$value) {
