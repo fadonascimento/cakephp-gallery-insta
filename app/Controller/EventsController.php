@@ -22,10 +22,16 @@ class EventsController extends AppController {
 	}
 
 
-	public function viewEvent($eventId,$slug) {
-		$this->layout = 'site';
-		debug($eventId);
-		debug($slug);
+	public function viewEvent($eventId) {
+		$this->layout = 'event';
+
+		$options = array('conditions' => array('Event.' . $this->Event->Album->primaryKey => $eventId));
+		$event = $this->Event->Album->find('first', $options);
+		$this->set(array(
+						'event' => $event,
+						'title_for_layout' => $event['Event']['name']));
+		
+		//debug($slug);
 	}
 
 

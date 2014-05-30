@@ -1,0 +1,65 @@
+body {
+	background: #111518;
+	color: #bababa;
+}
+html, body {
+	height: 100%;
+}
+.wrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -4em;
+}
+.footer, .push {
+	height: 4em;
+}
+.header,.footer{
+		background: #202629;
+		height: 150px;
+
+}
+.logo {
+	background: url(../img/suacamera.png) no-repeat;
+	text-indent: -9999px;
+	overflow: hidden;
+	height: 100px;
+	width: 100%;
+	display: block;
+	background-size: contain;
+}
+.title-event {
+	font-size: 4em;
+	padding-top: 0.4em;
+	font-weight: lighter;
+}
+
+.content-list-pictures {
+	padding: 2em 0;
+}
+
+.title-tag {
+	color: #fff;
+	font-weight: lighter;
+}
+
+.ss-heart {
+	float: right;
+	color: #465058;
+	cursor: pointer;
+}
+
+.ss-heart:hover{
+	color: #de2154;
+}
+
+.ss-heart:before {
+	content: '♥';
+	font-size: 1.4em;
+}
+.score_heart {
+	color: #bababa;
+	float: right;
+	padding: 5px 5px 0 0;
+	font-size: 1em;
+}
